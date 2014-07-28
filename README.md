@@ -1,4 +1,6 @@
 pb
 ==
 python project
-这是一个练习
+
+python中国人
+中
