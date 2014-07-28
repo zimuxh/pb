@@ -14,6 +14,10 @@ urlpatterns = patterns('',
 
     (r'^js/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.JS_STATIC_PATH}),
     
+    (r'^css/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.CSS_STATIC_PATH}),
+    
+    (r'^html/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.HTML_STATIC_PATH}),
+    
     url(r'^admin/', include(admin.site.urls)),
                        
     url(r'^index$', 'pb.views.index'),
