@@ -9,7 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'pb.views.home', name='home'),
+     url(r'^$', 'pb.views.home', name='home'),
     #url(r'^blog/', include('blog.urls')),
 
     (r'^js/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.JS_STATIC_PATH}),
@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     (r'^css/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.CSS_STATIC_PATH}),
     
     (r'^html/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.HTML_STATIC_PATH}),
+    
+    url(r'^$', 'pb.views.index'),
     
     url(r'^admin/', include(admin.site.urls)),
                        
