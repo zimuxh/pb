@@ -29,4 +29,6 @@ urlpatterns = patterns('',
     url(r'^about$', 'pb.views.about'),
     
     url(r'^list$', 'pb.views.list'),
+    
+    url(r'^article$', 'pb.views.article')
 )

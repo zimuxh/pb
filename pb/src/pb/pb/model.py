@@ -23,5 +23,5 @@ class Posts(models.Model):
     ping_status = models.CharField()
     post_password = models.CharField()
     def __unicode__(self):
-        return self.post_title + "\n" + self.post_content
+        return self.post_content
     

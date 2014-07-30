@@ -4,6 +4,7 @@
 @author: Administrator
 '''
 from django.shortcuts import  render_to_response,render
+from django.http import HttpResponse
 from model import Article, Posts
 #from django.contrib.auth.models import User
 #首页
@@ -18,7 +19,15 @@ def about(request):
 def list(request):
     print 'list'
     #article =  Article()
-    all = Posts.objects.all();
+    all = Posts.objects.filter(post_author=2);
+    
+    return render(request,'main.html',{'all':all})
+#
+def article(request):
+    all = Posts.objects.all(post_author=2)
+    a = '++'
     for i in all:
-        print i.id
-    return render(request,'page.html',{'all':all})
+        a = i
+    print '======================='
+    print a
+    return HttpResponse(i)
