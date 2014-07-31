@@ -16,11 +16,18 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	
+	<!--  -->
+	<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+	
+	<script type="text/javascript">
+		tinymce.init({
+    		selector: "textarea"
+ 		});
+</script>
 </head>
 <body>
-	page:
-	{% for i in all %}
-	{{ i }}<br><br>
-	{% endfor %}
+	<form method="post">
+    	<textarea></textarea>
+	</form>
 </body>
 </html>
