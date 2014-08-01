@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="static/bootstrap-3.2.0/css/bootstrap.min.css">
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="/static/bootstrap-3.2.0/css/bootstrap-theme.min.css">
+
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="/static/jquery-easyui-1.4/jquery.min.js"></script>
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="/static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#main {
+		 float: left;
+		 height: 100%;
+		 width: 100%;
+		 border: 1px solid #FFFFFF;
+		}
+		#left {
+		 float: left;
+		 height: 100%;
+		 width: 10%;
+		 border: 1px solid #FFFFFF;
+		}
+		#center {
+		 float: left;
+		 height: 100%;
+		 width: 70%;
+		 border: 1px solid #FFFFFF;
+		}
+		#right {
+		 float: right;
+		 height: 100%;
+		 width: 20%;
+		 border: 1px solid #FFFFFF;
+		}
+	</style>
+	<script type="text/javascript">
+		function load() {
+				$.ajax({
+					url:'../list',
+					type:'GET',
+					dataType:'text',
+					success:function(data){
+						alert(data['all']);
+					}
+				});
+			}
+	</script>
+</head>
+<body onload="load();">
+	<div id="main">
+ 		<div id="left">
+
+		</div>
+		<div id="center">
+			<p>文章列表</p>
+			{% for i in all %}
+			<div>
+				<h2 contenteditable="false">标题</h2>
+				
+				<p contenteditable="false">{{ i }}</p>
+				
+				<p><a class="btn" contenteditable="false" href="#">查看更多 &raquo;</a></p>
+				
+				<p contenteditable="false">{{ i.post_date }}</p>
+				
+			</div>
+			{% endfor %}
+		</div>
+    	<div id="right">
+    	
+    	</div>
+	</div>
+</body>
+</html>

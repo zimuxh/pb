@@ -7,9 +7,12 @@ Created on 2014年7月29日
 from django.db import models
 
 class Article(models.Model):
+    title = models.CharField(max_length = 10)
+    time = models.TimeField(max_length = 7)
     content = models.CharField(max_length = 1000)
+    group = models.IntegerField(max_length = 7)
     def __unicode__(self):
-        return self.content
+        return self.title
     
 class Posts(models.Model):
     post_author = models.IntegerField()

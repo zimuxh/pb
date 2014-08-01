@@ -86,9 +86,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'html/'),
+    os.path.join(BASE_DIR, 'static/html/'),
 )
-
+'''
 JS_STATIC_PATH= BASE_DIR + '/js/'
 
 CSS_STATIC_PATH= BASE_DIR + '/css/'
@@ -96,3 +96,4 @@ CSS_STATIC_PATH= BASE_DIR + '/css/'
 HTML_STATIC_PATH= BASE_DIR + '/html/'
 
 IMAGES_STATIC_PATH= BASE_DIR + '/images/'
+'''

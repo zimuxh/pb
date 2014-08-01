@@ -15,12 +15,16 @@ def index(request):
 def about(request):
     print 'about'
     return render_to_response('about.html')
-#文章列表页面
+#文章列表页面        param:文章的分类  当为0时  表示全部
 def list(request):
-    print 'list'
-    #article =  Article()
-    all = Posts.objects.filter(post_author=2);
-    return render(request,'main.html',{'all':all})
+    param = request.GET.get("param")
+    if param == None:
+        all = Article.objects.all()
+    else:
+        all =  Article.objects.filter(group = param)
+    print all   
+    #all = Posts.objects.filter(post_author=2);
+    return render(request,{'all':all})
 #
 def article(request):
     all = Posts.objects.all(post_author=2)
