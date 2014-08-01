@@ -20,11 +20,12 @@ urlpatterns = patterns('',
     
     #(r'^images/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.IMAGES_STATIC_PATH}),
     
-    (r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_URL}),
+    (r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC}),
 
     url(r'^$', 'pb.views.index'),
     
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', 'pb.views.toLogin'),
                        
     url(r'^index$', 'pb.views.index'),
     

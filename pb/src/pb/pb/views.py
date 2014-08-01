@@ -36,7 +36,12 @@ def editor(request):
     title = request.POST['title']
     print content
     print title
-    article = Article(title=title,content=content,time=time.time(),group='1');
+    article = Article(title=title,content=content,group='1');
+    print article
     article.save()
     result = 1
+    print result
     return HttpResponse(result, mimetype='application/javascript')
+
+def toLogin(request):
+    return render(request,'admin/login.html',{})

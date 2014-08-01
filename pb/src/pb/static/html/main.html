@@ -9,6 +9,8 @@
 
 	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
 	<link rel="stylesheet" href="/static/bootstrap-3.2.0/css/bootstrap-theme.min.css">
+	
+	<link rel="stylesheet" href="/static/ueditor1_4_3-utf8-php/third-party/SyntaxHighlighter/shCoreDefault.css">
 
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="/static/js/jquery-easyui-1.4/jquery.min.js"></script>
@@ -17,6 +19,8 @@
 	<script src="/static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
 	
 	<script src="/static/ueditor1_4_3-utf8-php/ueditor.parse.js"></script>
+	
+	<script src="/static/ueditor1_4_3-utf8-php/third-party/SyntaxHighlighter/shCore.js"></script>
 	
 	<style type="text/css">
 		#main {
@@ -44,16 +48,13 @@
 		 border: 1px solid #FFFFFF;
 		}
 	</style>
-	<script type="text/javascript">
-		function load() {
-				
-			}
+	<script>  
+		SyntaxHighlighter.all() //执行代码高亮  
 	</script>
 </head>
-<body onload="load();">
+<body >
 	<div id="main">
  		<div id="left">
-
 		</div>
 		<div id="center">
 			<p>文章列表</p>
@@ -79,5 +80,8 @@
     	
     	</div>
 	</div>
+	uParse('#center', {
+    	rootPath: '/static/'
+	})
 </body>
 </html>

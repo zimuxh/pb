@@ -8,7 +8,7 @@ from django.db import models
 
 class Article(models.Model):
     title = models.CharField(max_length = 10)
-    time = models.TimeField(max_length = 7)
+    time = models.DateTimeField(auto_now=True)
     content = models.CharField(max_length = 1000)
     group = models.IntegerField(max_length = 7)
     def __unicode__(self):
