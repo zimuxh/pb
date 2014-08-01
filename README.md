@@ -1,8 +1,10 @@
 
-python projectÖ÷Òª×÷Îª×Ô¼ºÁ·Ï°µÄÒ»¸öÏîÄ¿¡£
+python projectä¸»è¦ä½œä¸ºè‡ªå·±ç»ƒä¹ çš„ä¸€ä¸ªé¡¹ç›®ã€‚
 
 bootstrap
 
 http://www.bootcss.com/
 
 http://v3.bootcss.com/components/#nav-dropdowns
+
+ç¼–å†™
