@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/static/js/jquery-easyui-1.4/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" id="title" name="title"> 
+	<!-- 加载编辑器的容器 -->
+    <script id="container" name="content" type="text/plain">
+      
+    </script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="/static/ueditor1_4_3-utf8-php/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/static/ueditor1_4_3-utf8-php/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+        function getHTML() {
+        	//获取html内容，返回: <p>hello</p>
+            var html = ue.getContent();
+            //获取纯文本内容，返回: hello
+            var txt = ue.getContentTxt();
+            alert(html);
+            $.ajax({
+            	url:'/editor',
+            	type:'POST',
+            	data:{'content':html,"title":$('#title').val()},
+            	success:function(result){
+            		alert(result);
+            	}
+            	
+            });
+            
+        }
+    </script>
+ 	<input type="button" value="提交" onclick="getHTML();">
+</body>
+</html>

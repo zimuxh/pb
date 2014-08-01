@@ -5,7 +5,7 @@
 	<title>Index</title>
 	
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
-	<link rel="stylesheet" href="static/bootstrap-3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/bootstrap-3.2.0/css/bootstrap.min.css">
 
 	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
 	<link rel="stylesheet" href="/static/bootstrap-3.2.0/css/bootstrap-theme.min.css">
@@ -15,6 +15,9 @@
 
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="/static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+	
+	<script src="/static/ueditor1_4_3-utf8-php/ueditor.parse.js"></script>
+	
 	<style type="text/css">
 		#main {
 		 float: left;
@@ -43,14 +46,7 @@
 	</style>
 	<script type="text/javascript">
 		function load() {
-				$.ajax({
-					url:'../list',
-					type:'GET',
-					dataType:'text',
-					success:function(data){
-						alert(data['all']);
-					}
-				});
+				
 			}
 	</script>
 </head>
@@ -63,13 +59,18 @@
 			<p>文章列表</p>
 			{% for i in all %}
 			<div>
-				<h2 contenteditable="false">标题</h2>
+				<h2 contenteditable="false">{{ i.title }}</h2>
 				
-				<p contenteditable="false">{{ i }}</p>
+				<p contenteditable="false">
+					{% autoescape off %}
+						{{ i.content }}
+					{% endautoescape %}
+				</p>
+				
 				
 				<p><a class="btn" contenteditable="false" href="#">查看更多 &raquo;</a></p>
 				
-				<p contenteditable="false">{{ i.post_date }}</p>
+				<p contenteditable="false">{{ i.time }}</p>
 				
 			</div>
 			{% endfor %}

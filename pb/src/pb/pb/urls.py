@@ -32,5 +32,7 @@ urlpatterns = patterns('',
     
     url(r'^list$', 'pb.views.list'),
     
-    url(r'^article$', 'pb.views.article')
+    url(r'^article$', 'pb.views.article'),
+    
+    url(r'^editor$', 'pb.views.editor'),
 )

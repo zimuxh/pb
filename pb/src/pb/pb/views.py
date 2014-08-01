@@ -6,6 +6,7 @@
 from django.shortcuts import  render_to_response,render
 from django.http import HttpResponse
 from model import Article, Posts
+import time
 #from django.contrib.auth.models import User
 #首页
 def index(request):
@@ -24,8 +25,18 @@ def list(request):
         all =  Article.objects.filter(group = param)
     print all   
     #all = Posts.objects.filter(post_author=2);
-    return render(request,{'all':all})
+    return render(request,'main.html',{'all':all})
 #
 def article(request):
     all = Posts.objects.all(post_author=2)
     return HttpResponse(all)
+
+def editor(request):
+    content = request.POST['content']
+    title = request.POST['title']
+    print content
+    print title
+    article = Article(title=title,content=content,time=time.time(),group='1');
+    article.save()
+    result = 1
+    return HttpResponse(result, mimetype='application/javascript')
