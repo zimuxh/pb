@@ -20,14 +20,8 @@ def list(request):
     print 'list'
     #article =  Article()
     all = Posts.objects.filter(post_author=2);
-    
     return render(request,'main.html',{'all':all})
 #
 def article(request):
     all = Posts.objects.all(post_author=2)
-    a = '++'
-    for i in all:
-        a = i
-    print '======================='
-    print a
-    return HttpResponse(i)
+    return HttpResponse(all)
