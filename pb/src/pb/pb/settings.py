@@ -92,7 +92,7 @@ TEMPLATE_DIRS = (
 )
 
 
-
+JS_STATIC_PATH= BASE_DIR + '/js/'
 '''
 JS_STATIC_PATH= BASE_DIR + '/js/'
 

@@ -4,8 +4,10 @@
 @author: Administrator
 '''
 from django.shortcuts import  render_to_response,render
+
 from django.http import HttpResponse
-from model import Article, Posts
+
+from model import Article
 
 #from django.contrib.auth.models import User
 #首页
@@ -26,10 +28,6 @@ def list(request):
     print all   
     #all = Posts.objects.filter(post_author=2);
     return render(request,'main.html',{'all':all})
-#
-def article(request):
-    all = Posts.objects.all(post_author=2)
-    return HttpResponse(all)
 
 def editor(request):
     content = request.POST['content']
