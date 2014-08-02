@@ -34,4 +34,6 @@ urlpatterns = patterns('',
     url(r'^list$', 'pb.views.list'),
     
     url(r'^editor$', 'pb.views.editor'),
+    
+    url(r'^toLogin', 'pb.views.toLogin'),
 ) 

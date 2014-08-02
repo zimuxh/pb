@@ -3,58 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.4/themes/icon.css">
+	<script type="text/javascript" src="/js/jquery-easyui-1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
 <style type="text/css">
-	.loginForm {
-	background: none repeat scroll 0 0 #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-    font-weight: 400;
-    margin-left: 0;
-    margin-top: 20px;
-    overflow: hidden;
-    padding: 26px 24px 46px;
-	}
+body {
+	margin: 0px;
+	background-image: url('static/images/bg.jpg');
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: auto;
+	position: relative;
+	left: -290px;
+	width: 270px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
 </style>
+
+<script type="text/javascript">
+	document.onkeydown = function(e) {
+		var event = e || window.event;
+		var code = event.keyCode || event.which || event.charCode;
+		if (code == 13) {
+			login();
+		}
+	}
+	$(function() {
+		$("input[name='login']").focus();
+	});
+	function cleardata() {
+		$('#loginForm').form('clear');
+	}
+	function login() {
+		if ($("input[name='login']").val() == ""
+				|| $("input[name='password']").val() == "") {
+			$("#showMsg").html("用户名或密码为空，请输入");
+			$("input[name='login']").focus();
+		} else {
+			//ajax异步提交  
+			$.ajax({
+				type : "POST", //post提交方式默认是get
+				url : "login.action",
+				data : $("#loginForm").serialize(), //序列化               
+				error : function(request) { // 设置表单提交出错                 
+					$("#showMsg").html(request); //登录错误提示信息
+				},
+				success : function(data) {
+					document.location = "index.action";
+				}
+			});
+		}
+	}
+</script>
 </head>
- <body>
-    <div id="base" class="">
+<body>
+	<div id="loginWin" class="easyui-window" title="登录"	style="width: 350px; height: 188px; padding: 5px;">
+		<div class="easyui-layout" fit="true">
+			<div region="center" border="false"
+				style="padding: 5px; background: #fff; border: 1px solid #ccc;">
+				<form id="loginForm" method="post">
+					<div style="padding: 5px 0;">
+						<label for="login">帐号:</label> <input type="text" name="login"
+							style="width: 260px;"></input>
+					</div>
+					<div style="padding: 5px 0;">
+						<label for="password">密码:</label> <input type="password"
+							name="password" style="width: 260px;"></input>
+					</div>
+					<div style="padding: 5px 0; text-align: center; color: red;"
+						id="showMsg"></div>
+				</form>
+			</div>
+			<div region="south" border="false"
+				style="text-align: right; padding: 5px 0;">
+				<a class="easyui-linkbutton" iconCls="icon-ok"
+					href="javascript:void(0)" onclick="login()">登录</a> <a
+					class="easyui-linkbutton" iconCls="icon-cancel"
+					href="javascript:void(0)" onclick="cleardata()">重置</a>
+			</div>
+		</div>
+	</div>
+</body>
 
-      <!-- Unnamed (形状) -->
-      <div id="u0" class="ax_文本">
-        <img id="u0_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u1" class="text">
-          <p><span style="font-family:'Consolas Regular', 'Consolas';">用户名：</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (形状) -->
-      <div id="u2" class="ax_文本">
-        <img id="u2_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u3" class="text">
-          <p><span style="font-family:'Consolas Regular', 'Consolas';">密</span><span style="font-family:'Consolas Regular', 'Consolas';">&nbsp;</span><span style="font-family:'Consolas Regular', 'Consolas';">码：</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (文本框(单行)) -->
-      <div id="u4" class="ax_文本框_单行_">
-        <input id="u4_input" type="text" value="" class="text_sketch"/>
-      </div>
-
-      <!-- Unnamed (文本框(单行)) -->
-      <div id="u5" class="ax_文本框_单行_">
-        <input id="u5_input" type="text" value="" class="text_sketch"/>
-      </div>
-
-      <!-- Unnamed (HTML按钮) -->
-      <div id="u6" class="ax_html__">
-        <input id="u6_input" type="submit" value="登录" class="text_sketch"/>
-      </div>
-
-      <!-- Unnamed (HTML按钮) -->
-      <div id="u7" class="ax_html__">
-        <input id="u7_input" type="submit" value="取消" class="text_sketch"/>
-      </div>
-    </div>
-  </body>
+</body>
 </html>

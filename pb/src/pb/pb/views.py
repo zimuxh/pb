@@ -40,4 +40,4 @@ def editor(request):
     return HttpResponse(result, mimetype='application/javascript')
 
 def toLogin(request):
-    return render(request,'admin/login.html',{})
+    return render(request,'admin/login.html')
