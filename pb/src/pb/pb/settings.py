@@ -85,14 +85,17 @@ USE_TZ = True
 
 STATIC_URL =  '/static/'
 
-STATIC = BASE_DIR + "/static/"
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+
+#STATIC_ROOT = '/static/'
+
 #
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'static/html/'),
 )
 
 
-JS_STATIC_PATH= BASE_DIR + '/js/'
+#JS_STATIC_PATH= BASE_DIR + '/js/'
 '''
 JS_STATIC_PATH= BASE_DIR + '/js/'
 

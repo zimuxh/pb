@@ -4,7 +4,7 @@ from django.conf.urls import patterns, url
 from django.contrib import admin
 
 from django.conf import settings
-
+from django.conf.urls.static import static
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     #url(r'^admin/', include(admin.site.urls)),
 
-    (r'^js/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.JS_STATIC_PATH}),
+    #(r'^js/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.JS_STATIC_PATH}),
     
     #(r'^css/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.CSS_STATIC_PATH}),
     
@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     
     url(r'^$', 'pb.views.index'),
 
-    url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC}),
+    (r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATICFILES_DIRS,'show_indexes': True}),
     
     url(r'^admin/', 'pb.views.toLogin'),
                        
@@ -34,4 +34,4 @@ urlpatterns = patterns('',
     url(r'^list$', 'pb.views.list'),
     
     url(r'^editor$', 'pb.views.editor'),
-)
+) 
