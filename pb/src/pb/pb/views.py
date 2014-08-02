@@ -12,32 +12,34 @@ from model import Article
 #from django.contrib.auth.models import User
 #首页
 def index(request):
-    print 'index'
+   
     return render_to_response('index.html')
 #关于页面
 def about(request):
-    print 'about'
+    
     return render_to_response('about.html')
-#文章列表页面        param:文章的分类  当为0时  表示全部
+#文章列表页面        param:文章的分类  当为0时  表示全部    
 def list(request):
     param = request.GET.get("param")
     if param == None:
         all = Article.objects.all()
     else:
         all =  Article.objects.filter(group = param)
-    print all   
-    #all = Posts.objects.filter(post_author=2);
     return render(request,'main.html',{'all':all})
-
+#文章保存页面
 def editor(request):
     content = request.POST['content']
     title = request.POST['title']
     article = Article(title=title,content=content,group='1');
-    print article
     article.save()
-    result = 1
+    result = "文章保存成功！"
     print result
     return HttpResponse(result, mimetype='application/javascript')
 
 def toLogin(request):
     return render(request,'admin/login.html')
+
+#
+def pagelist(request):
+    all = Article.objects.all()
+    return render(request,'admin/pagelist.html',{'all':all})

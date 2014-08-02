@@ -6,10 +6,10 @@
 <script src="/static/js/jquery-easyui-1.4/jquery.min.js"></script>
 </head>
 <body>
-	<input type="text" id="title" name="title"> 
+<div style="width:70%;height:50%;">
+	<span>文章标题：</span><input type="text" id="title" name="title" style="width:300px;"> 
 	<!-- 加载编辑器的容器 -->
-    <script id="container" name="content" type="text/plain">
-      
+    <script id="container" name="content" type="text/plain" style="width:900px;height:320px;">
     </script>
     <!-- 配置文件 -->
     <script type="text/javascript" src="/static/ueditor1_4_3-utf8-php/ueditor.config.js"></script>
@@ -17,25 +17,44 @@
     <script type="text/javascript" src="/static/ueditor1_4_3-utf8-php/ueditor.all.js"></script>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
-        var ue = UE.getEditor('container');
+        var ue ;//= UE.getEditor('container');
+        
+        if (typeof location.href == "string") {
+        	var url = location.href.split('?');
+        	var width = url[1].split('&')[0].split('=')[1]; 
+        	console.log(width );
+        	ue = UE.getEditor('container',{initialFrameWidth:width});
+        }else{
+        	ue = UE.getEditor('container');
+        }
         function getHTML() {
         	//获取html内容，返回: <p>hello</p>
             var html = ue.getContent();
             //获取纯文本内容，返回: hello
             var txt = ue.getContentTxt();
-            alert(html);
+            if(!$('#title').val()) {
+            	alert('请输入标题');
+            	$('#title').css('border-color','red');
+            	$('#title').focus();
+            	return false;
+            }
+            // 提交编辑器的内容
             $.ajax({
             	url:'/editor',
             	type:'POST',
+            	dataType:'text',
             	data:{'content':html,"title":$('#title').val()},
             	success:function(result){
             		alert(result);
+            	},
+            	error:function(result){
+            		alert("error:" + result);
+            		console.log(result);
             	}
-            	
             });
-            
         }
     </script>
  	<input type="button" value="提交" onclick="getHTML();">
+</div>
 </body>
 </html>

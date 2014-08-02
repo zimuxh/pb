@@ -3,16 +3,92 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.4/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.4/themes/icon.css">
-	<script type="text/javascript" src="/js/jquery-easyui-1.4/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" href="/static/bootstrap-3.2.0/css/bootstrap.min.css">
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="/static/bootstrap-3.2.0/css/bootstrap-theme.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/static/js/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/js/jquery-easyui-1.4/themes/icon.css">
+	
+	<script type="text/javascript" src="/static/js/jquery-easyui-1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="/static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function toPage(page) {
+			var width =  document.getElementById('center').style.width.replace('px','') ;
+			var height = document.getElementById('center').style.height.replace('px','') ;
+			console.log((width - 50 )+ ";" + height);
+			document.getElementById('mainFrame').width = width - 8;
+			document.getElementById('mainFrame').height = height - 10;
+			// page = 1  返回首页    2 写文章  3 文章管理   4 标签管理
+			// 
+			switch(page){
+				case 1 :
+					location.href = 'http://127.0.0.1:8000/index';
+					break;
+				case 2 :
+					document.getElementById('mainFrame').src = 'editor.html?width=' + (width - 50) ;
+					break;
+				case 3 :
+					document.getElementById('mainFrame').src = "/pagelist";
+					break;
+				case 4 :
+					
+					break;
+				default:
+					alert("没有更过的选择了");
+			}
+		}
+	</script>
 </head>
 <body class="easyui-layout" >
+	<div data-options="region:'west',split:true" title="菜单栏" style="width:150px;">
+		<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<ul class="nav nav-list">
+				<li class="nav-header">
+					列表标题
+				</li>
+				<li class="active">
+					<a href="#" onclick="toPage(1);">返回首页</a>
+				</li>
+				<li class="active">
+					<a href="#" onclick="toPage(2);">写新文章</a>
+				</li>
+				<li class="active">
+					<a href="#" onclick="toPage(3);">文章管理</a>
+				</li>
+				<li class="active">
+					<a href="#">标签管理</a>
+				</li>
+				<li class="nav-header">
+					功能列表
+				</li>
+				<li>
+					<a href="#">资料</a>
+				</li>
+				<li>
+					<a href="#">设置</a>
+				</li>
+				<li class="divider">
+				</li>
+				<li>
+					<a href="#">帮助</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+	</div>
 	<div data-options="region:'north'" style="height:50px"></div>
-	<div data-options="region:'south',split:true" style="height:50px;"></div>
+	
 	<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>
-	<div data-options="region:'west',split:true" title="West" style="width:100px;"></div>
-	<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'"></div>
+	<div id="center" data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
+		<iframe id="mainFrame" name="mainFrame"  frameborder="0" scrolling="auto"></iframe>
+	</div>
 </body>
 </html>
