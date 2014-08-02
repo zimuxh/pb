@@ -8,15 +8,15 @@
 	<p>文章列表</p>
 		<table >
 			<tr>
-				<td><p>标题</p></td>
-				<td><p>时间</p></td>
+				<td><p>文章标题                       </p></td>
+				<td><p>发表时间</p></td>
 			</tr>
 			{% for i in all %}
 				<tr>
-					<td><p>{{ i.title }}</p></td>
+					<td><p style="color:blue;">{{ i.title }}</p></td>
 					<td>{{ i.time }}</td>
-					<td>删除</td>
-					<td>编辑</td>
+					<td><a style="color:blue;">删除</a></td>
+					<td><a style="color:blue;">编辑</a></td>
 				</tr>		
 			{% endfor %}
 		</table>
