@@ -6,7 +6,7 @@
 from django.shortcuts import  render_to_response,render
 from django.http import HttpResponse
 from model import Article, Posts
-import time
+
 #from django.contrib.auth.models import User
 #首页
 def index(request):
@@ -34,8 +34,6 @@ def article(request):
 def editor(request):
     content = request.POST['content']
     title = request.POST['title']
-    print content
-    print title
     article = Article(title=title,content=content,group='1');
     print article
     article.save()
