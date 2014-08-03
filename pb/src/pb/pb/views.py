@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 '''
-
+  
 @author: Administrator
 '''
 from django.shortcuts import  render_to_response,render
