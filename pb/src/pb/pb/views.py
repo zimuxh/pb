@@ -36,9 +36,6 @@ def editor(request):
     print result
     return HttpResponse(result, mimetype='application/javascript')
 
-def toLogin(request):
-    return render(request,'admin/login.html')
-
 #
 def pagelist(request):
     all = Article.objects.all()

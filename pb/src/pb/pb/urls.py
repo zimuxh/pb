@@ -1,5 +1,5 @@
 
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 
 from django.contrib import admin
 
@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'pb.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 
     #(r'^js/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.JS_STATIC_PATH}),
     
@@ -24,8 +24,6 @@ urlpatterns = patterns('',
     url(r'^$', 'pb.views.index'),
 
     (r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATICFILES_DIRS,'show_indexes': True}),
-    
-    url(r'^admin/', 'pb.views.toLogin'),
                        
     url(r'^index$', 'pb.views.index'),
     
@@ -34,8 +32,6 @@ urlpatterns = patterns('',
     url(r'^list$', 'pb.views.list'),
     
     url(r'^editor$', 'pb.views.editor'),
-    
-    url(r'^toLogin', 'pb.views.toLogin'),
     
     url(r'^pagelist', 'pb.views.pagelist'),
 ) 
