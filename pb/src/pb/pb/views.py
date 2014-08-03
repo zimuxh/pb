@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 '''
-  kk  hello 
+  kk  hello  
 @author: Administrator
 '''
 from django.shortcuts import  render_to_response,render
